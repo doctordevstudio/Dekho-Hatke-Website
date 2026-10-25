@@ -9,7 +9,7 @@
   if (!code || !/^[A-Za-z0-9_-]{16,64}$/.test(code)) return;
 
   var rm = document.createElement("meta"); rm.name = "robots"; rm.content = "noindex,nofollow"; document.head.appendChild(rm);
-  var S = null, nonce = "", reached = false, tsToken = "", tsId = null, busy = false;
+  var S = null, nonce = "", reached = false, topAt = -1e9, tsToken = "", tsId = null, busy = false;
   var timer = { left: 0, run: false, last: 0, id: 0 };
   var el = {};
 
@@ -20,13 +20,24 @@
       method: "POST", cache: "no-store", credentials: "same-origin",
       headers: { "content-type": "application/json" }, body: JSON.stringify(body)
     }).then(function (r) {
-      if (r.status >= 500 && tries < 6) return wait(1500 + tries * 1500).then(function () { return api(path, body, tries + 1); });
-      return r.json().catch(function () { return { ok: false }; });
+      if (r.status >= 500 && tries < 8) return wait(1500 + tries * 1500).then(function () { return api(path, body, tries + 1); });
+      // a non-JSON reply means the proxy/backend is not set up right (NOT an invalid link)
+      return r.json().catch(function () { return { ok: false, err: "config" }; });
     }, function () {
-      if (tries < 6) return wait(1500 + tries * 1500).then(function () { return api(path, body, tries + 1); });
+      if (tries < 8) return wait(1500 + tries * 1500).then(function () { return api(path, body, tries + 1); });
       return { ok: false, err: "network" };
     });
   }
+  function down(d) { return d.err === "network" || d.err === "upstream" || d.err === "not_configured" || d.err === "config"; }
+  function fail() {
+    css(); document.documentElement.classList.add("dhg");
+    var b = document.createElement("div"); b.id = "dhg-bar";
+    b.innerHTML = '<div class="in"><div class="l"><b>Could not connect</b><span id="dhg-msg">The server is waking up or unavailable. Please try again.</span></div>' +
+      '<div class="r"><button class="dhg-btn" type="button">Retry</button></div></div>';
+    b.querySelector("button").onclick = function () { location.reload(); };
+    document.body.appendChild(b);
+  }
+  function offline() { paint(); el.msg.textContent = "⚠️ Connection problem. Please try again."; }
   function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
   function home() { location.replace("/"); }
   function sig(ev, extra) {
@@ -37,8 +48,8 @@
 
   /* ---------------- boot ---------------- */
   api("init", { t: code, p: location.pathname }).then(function (d) {
-    if (d.err === "network") return;                 // backend unreachable: leave the plain blog page
-    if (!d.ok) return home();
+    if (down(d)) return fail();                       // infrastructure problem: show a retry bar
+    if (!d.ok) return home();                         // invalid / expired / used link: silent redirect
     if (d.redirect) return location.replace(d.redirect);
     build(); apply(d);
   });
@@ -170,16 +181,21 @@
   function onBottomBtn(e) {
     if (phase === "verify") return doVerify(e);
     if (phase !== "scroll" || busy) return;
+    var gap = 1400 - (performance.now() - topAt);      // server needs >1.2s between the two Continue clicks
+    if (gap > 0) {
+      busy = true; paint();
+      return setTimeout(function () { busy = false; send("bottom_click", e, { bottom: reached }); }, gap);
+    }
     send("bottom_click", e, { bottom: reached });
   }
   function send(ev, e, extra) {
     busy = true; paint();
     api("event", { t: code, n: nonce, ev: ev, sig: sig(e, extra || {}) }).then(function (d) {
       busy = false;
-      if (d.ok) return apply(d);
+      if (d.ok) { if (ev === "top_click") topAt = performance.now(); return apply(d); }
       if (d.err === "resync" || d.err === "slow_down") return resync();
-      if (!d.err || d.err !== "network") return home();
-      paint();
+      if (down(d)) return offline();
+      home();
     });
   }
   function resync() {
@@ -187,7 +203,8 @@
       busy = false;
       if (d.ok && d.redirect) return location.replace(d.redirect);
       if (d.ok) return apply(d);
-      if (d.err !== "network") home();
+      if (down(d)) return offline();
+      home();
     });
   }
   function doVerify(e) {
@@ -202,7 +219,8 @@
       busy = false;
       if (d.err === "captcha") { tsToken = ""; if (window.turnstile && tsId !== null) turnstile.reset(tsId); return paint(); }
       if (d.err === "resync" || d.err === "slow_down") return resync();
-      if (d.err !== "network") home(); else paint();
+      if (down(d)) return offline();
+      home();
     });
   }
 

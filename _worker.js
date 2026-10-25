@@ -16,6 +16,7 @@ const ROUTES = {
   "/api/event": ["POST"],
   "/api/verify": ["POST"],
   "/api/health": ["GET", "HEAD"],
+  "/api/ping": ["GET"], // diagnostic: proves worker -> backend -> PROXY_SECRET all match
 };
 
 const json = (obj, status = 200) =>
