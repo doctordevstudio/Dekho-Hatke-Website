@@ -1,4 +1,0 @@
-wrangler.jsonc
-README.txt
-_worker.js
-_routes.json
