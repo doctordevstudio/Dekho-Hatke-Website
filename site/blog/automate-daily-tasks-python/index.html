@@ -1,0 +1,162 @@
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Automate Daily Tasks with Python: 4 Scripts | Dekho Hatke</title><meta name="description" content="Automate daily tasks with Python: organise folders, delete old files, rename photos and send reports, using safe dry-run scripts.">
+<meta name="author" content="Dr. Dev"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><link rel="canonical" href="https://dekhohatke.com/blog/automate-daily-tasks-python/">
+<link rel="alternate" type="application/rss+xml" title="Dekho Hatke" href="/feed.xml"><meta property="og:type" content="article"><meta property="og:locale" content="en_IN"><meta property="og:title" content="Automate Your Daily Tasks with Python"><meta property="og:description" content="Automate daily tasks with Python: organise folders, delete old files, rename photos and send reports, using safe dry-run scripts."><meta property="og:url" content="https://dekhohatke.com/blog/automate-daily-tasks-python/"><meta property="og:site_name" content="Dekho Hatke"><meta property="og:image" content="https://dekhohatke.com/assets/img/covers/automate-daily-tasks-python.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Automate Your Daily Tasks with Python - cover illustration"><meta property="article:published_time" content="2026-01-10T06:00:00+05:30"><meta property="article:modified_time" content="2026-10-29T06:00:00+05:30"><meta property="article:section" content="Automation"><meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Automate Your Daily Tasks with Python"><meta name="twitter:description" content="Automate daily tasks with Python: organise folders, delete old files, rename photos and send reports, using safe dry-run scripts."><meta name="twitter:image" content="https://dekhohatke.com/assets/img/covers/automate-daily-tasks-python.jpg"><meta name="twitter:image:alt" content="Automate Your Daily Tasks with Python - cover illustration"><meta name="theme-color" content="#f4f3fb">
+<link rel="preload" as="image" href="/assets/img/covers/automate-daily-tasks-python.jpg" fetchpriority="high">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Automate Your Daily Tasks with Python", "description": "Automate daily tasks with Python: organise folders, delete old files, rename photos and send reports, using safe dry-run scripts.", "image": ["https://dekhohatke.com/assets/img/covers/automate-daily-tasks-python.jpg"], "datePublished": "2026-01-10", "dateModified": "2026-10-29", "author": {"@type": "Person", "name": "Dr. Dev", "url": "https://dekhohatke.com/about/"}, "publisher": {"@type": "Organization", "name": "Dekho Hatke", "url": "https://dekhohatke.com/", "logo": {"@type": "ImageObject", "url": "https://dekhohatke.com/icon-512.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://dekhohatke.com/blog/automate-daily-tasks-python/"}, "articleSection": "Automation", "keywords": "Python, Automation, Automate, Daily, Tasks, with, Scripts", "wordCount": 1705, "inLanguage": "en"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dekhohatke.com/"}, {"@type": "ListItem", "position": 2, "name": "Automate Your Daily Tasks with Python", "item": "https://dekhohatke.com/blog/automate-daily-tasks-python/"}]}]</script>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("dh-theme")||"light"}catch(e){}</script></head>
+<body><div class="blobs" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div><div id="progress" aria-hidden="true"></div>
+<div class="shell"><aside id="drawer" class="drawer" aria-label="Main navigation">
+<a class="brand" href="/"><img class="logo-img" src="/icon-192.png" alt="" width="46" height="46"><span><b>Dekho</b> Hatke</span></a>
+<nav id="nav"><a href="/" data-path="/"><i>🏠</i>Home</a><a href="/series/" data-path="/series/"><i>📚</i>Series</a><a href="/bookmarks/" data-path="/bookmarks/"><i class="navsvg"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></i>Bookmarks</a><a href="/privacy-policy/" data-path="/privacy-policy/"><i>🔒</i>Privacy Policy</a><a href="/privacy-policy/#terms" data-path="/privacy-policy/#terms"><i>📄</i>Terms and Conditions</a><a href="/contact/" data-path="/contact/"><i>✉️</i>Contact me</a><a href="/about/" data-path="/about/"><i>🙋</i>About me</a><p class="nav-h">Follow me on</p><a href="/follow/instagram/"><i class="navsvg"><svg viewBox="0 0 24 24" class="" aria-hidden="true" focusable="false" ><defs><linearGradient id="ign" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".62" stop-color="#d62976"/><stop offset=".85" stop-color="#962fbf"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5.6" fill="url(#ign)"/><circle cx="12" cy="12" r="4.4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="17.4" cy="6.6" r="1.3" fill="#fff"/></svg></i>Instagram</a><a href="/follow/facebook/"><i class="navsvg"><svg viewBox="0 0 24 24" class="" aria-hidden="true" focusable="false" ><circle cx="12" cy="12" r="10.5" fill="#1877F2"/><path fill="#fff" d="M13.2 21.4v-7.6h2.5l.4-3h-2.9V8.9c0-.9.3-1.5 1.5-1.5h1.6V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2H7.7v3h2.5v7.6z"/></svg></i>Facebook</a><a href="/follow/youtube/"><i class="navsvg"><svg viewBox="0 0 24 24" class="" aria-hidden="true" focusable="false" ><rect x="1.5" y="4.6" width="21" height="14.8" rx="4.4" fill="#FF0000"/><path fill="#fff" d="M9.8 8.8v6.4l5.6-3.2z"/></svg></i>YouTube</a><a href="/follow/x/"><i class="navsvg"><svg viewBox="0 0 24 24" class="" aria-hidden="true" focusable="false" ><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></i>X</a></nav></aside><div id="scrim" class="scrim"></div>
+<main class="main"><header class="topbar"><button class="icon-btn only-mobile" id="menuBtn" aria-label="Open menu">☰</button>
+<div class="search-wrap"><label class="search"><span aria-hidden="true">🔎</span><input id="q" type="search" placeholder="Search tutorials, tools, code…" autocomplete="off" aria-label="Search"></label><div id="results" class="results" hidden></div></div>
+<button class="icon-btn" id="themeBtn" aria-label="Toggle day and night mode">🌗</button></header>
+<div class="view"><article class="article"><nav class="tiny muted" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/#latest">Articles</a> / Automate Your Daily Tasks with Python</nav>
+<h1>Automate Your Daily Tasks with Python</h1><p class="muted">Automate daily tasks with Python: organise folders, delete old files, rename photos and send reports, using safe dry-run scripts.</p>
+<div class="row tiny muted"><span>By <a href="/about/">Dr. Dev</a></span><span>Published <time datetime="2026-01-10">2026-01-10</time></span><span>Updated <time datetime="2026-10-29">2026-10-29</time></span><span>9 min read</span></div><div class="row actions"><button class="btn bm-btn bm" data-slug="automate-daily-tasks-python" aria-label="Bookmark this article" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg><span class="bm-t">Bookmark</span></button><button class="btn share-btn" id="shareBtn" type="button" aria-label="Share this article"><svg viewBox="0 0 24 24" class="shi" aria-hidden="true" focusable="false" ><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg><span>Share</span></button></div>
+<div class="cover big c0"><img src="/assets/img/covers/automate-daily-tasks-python.jpg" alt="Automate Your Daily Tasks with Python - cover illustration" width="1200" height="630" fetchpriority="high" decoding="async"></div><nav class="toc card flat"><b>In this article</b><a href="#s0">What is worth automating?</a><a href="#s1">Five safety rules before you write any code</a><a href="#s2">Use pathlib instead of string paths</a><a href="#s3">Script 1: Organise the Downloads folder</a><a href="#s4">Script 2: Remove old files safely</a><a href="#s5">Script 3: Rename a batch of files</a><a href="#s6">Script 4: Send yourself a daily report</a><a href="#s7">Add logging so you can trust the script</a><a href="#s8">Combine the pieces into one project</a><a href="#s9">Run it automatically</a><a href="#s10">Ideas to extend your automation</a><a href="#s11">Frequently asked questions</a><a href="#s12">Final thoughts</a></nav><div class="prose"><p>Think about the small jobs you repeat every day or every week: sorting the Downloads folder, renaming photos, deleting old files, copying a report to a backup folder, sending a status message to your team. Each takes only a few minutes, but together they eat hours every month, and tired humans make mistakes such as deleting the wrong file or forgetting a step. A short Python script does the same job in a second, the same way every time.</p><p>This guide is the first part of our Python automation series. You will learn which tasks are worth automating, the safety habits that stop a script from destroying your files, and then you will build four useful scripts step by step: a folder organiser, a cleaner for old files, a batch renamer and a daily report sender. Everything uses only the Python standard library, so there is nothing extra to install. At the end you will see how to run the scripts on a schedule, which is the second part of the series.</p><h2 id="s0">What is worth automating?</h2><p>Not every task deserves a script. A good candidate has three properties: you do it often, the steps are always the same, and a mistake is annoying but not disastrous. Here are examples that readers commonly automate:</p><ul><li>Sorting downloaded files into folders by type: images, documents, installers, archives.</li><li>Renaming a batch of files, for example photos from a phone, into a clean pattern with dates.</li><li>Deleting temporary files and logs older than a few weeks.</li><li>Making a dated backup copy of an important folder.</li><li>Merging many CSV files from a daily export into one.</li><li>Sending yourself a summary message, such as disk space left or the number of new files.</li><li>Downloading a public report every morning and saving it in a folder.</li></ul><p>Bad candidates are tasks that need human judgement every time, or tasks where a mistake could cost money or lose data without any way back. For those, build a script that <strong>prepares</strong> the work and lets you confirm the final step.</p><h2 id="s1">Five safety rules before you write any code</h2><p>Scripts that touch files can do damage very quickly. A loop that moves or deletes files does it to hundreds of files in a blink. Follow these rules from the first script:</p><ol><li><strong>Dry run first.</strong> Make your script print what it would do, and only act when you switch a flag. Read the printed list, then run it for real.</li><li><strong>Move, do not delete.</strong> Moving files to a "trash" folder gives you a way back. Delete for real only when you are sure.</li><li><strong>Never overwrite silently.</strong> If a file with the same name exists in the destination, choose a new name instead of replacing it.</li><li><strong>Test on a copy.</strong> Create a test folder with sample files and point the script at it, never at your only copy of something important.</li><li><strong>Log what happened.</strong> A log file tells you what the script did yesterday when something looks wrong today.</li></ol><h2 id="s2">Use pathlib instead of string paths</h2><p>Python's <code>pathlib</code> module treats paths as objects, which works the same on Windows, macOS and Linux and avoids many bugs with slashes and joins:</p><pre><code>from pathlib import Path
+
+downloads = Path.home() / "Downloads"       # the / operator joins path parts
+print(downloads.exists())
+
+for item in downloads.iterdir():            # list the content of a folder
+    if item.is_file():
+        print(item.name, item.suffix, item.stat().st_size)</code></pre><p>The useful properties are <code>name</code> (file name), <code>stem</code> (name without extension), <code>suffix</code> (extension including the dot), <code>parent</code> (the folder) and <code>stat()</code> for the size and modification time.</p><figure><a href="/assets/img/fig/automate-daily-tasks-python-1.png" target="_blank" rel="noopener"><img src="/assets/img/fig/automate-daily-tasks-python-1.png" alt="Before and after view of a Downloads folder: mixed files on the left, sorted into Images, Documents, Archives, Installers and Media folders on the right." width="1200" height="580" loading="lazy" decoding="async"></a><figcaption>The organiser script sorts files by extension into folders. (tap the image to enlarge)</figcaption></figure><h2 id="s3">Script 1: Organise the Downloads folder</h2><p>A folder that collects everything becomes a mess. This script sorts files into sub-folders by type, based on a table of extensions. It supports a dry run and never overwrites a file:</p><pre><code>from pathlib import Path
+import shutil
+
+DRY_RUN = True      # change to False when the printed plan looks right
+
+SOURCE = Path.home() / "Downloads"
+
+CATEGORIES = {
+    "Images":    {".jpg", ".jpeg", ".png", ".gif", ".webp"},
+    "Documents": {".pdf", ".doc", ".docx", ".txt", ".xlsx", ".csv", ".pptx"},
+    "Archives":  {".zip", ".rar", ".7z", ".tar", ".gz"},
+    "Installers": {".exe", ".msi", ".dmg", ".apk"},
+    "Media":     {".mp3", ".mp4", ".mkv", ".wav"},
+}
+
+def category_for(path):
+    ext = path.suffix.lower()
+    for name, extensions in CATEGORIES.items():
+        if ext in extensions:
+            return name
+    return "Other"
+
+def unique_target(target):
+    """Return a path that does not exist yet by adding (1), (2)... to the name."""
+    if not target.exists():
+        return target
+    counter = 1
+    while True:
+        candidate = target.with_name(f"{target.stem} ({counter}){target.suffix}")
+        if not candidate.exists():
+            return candidate
+        counter += 1
+
+def organise(source):
+    moved = 0
+    for item in source.iterdir():
+        if not item.is_file() or item.name.startswith("."):
+            continue
+        destination_dir = source / category_for(item)
+        target = unique_target(destination_dir / item.name)
+        print(f"{item.name}  -&gt;  {target.relative_to(source)}")
+        if not DRY_RUN:
+            destination_dir.mkdir(exist_ok=True)
+            shutil.move(str(item), str(target))
+        moved += 1
+    print(f"{'Would move' if DRY_RUN else 'Moved'} {moved} files")
+
+if __name__ == "__main__":
+    organise(SOURCE)</code></pre><p>Some details deserve a comment. The loop uses <code>iterdir()</code> on the top folder only, so files already inside sub-folders are left alone, and re-running the script is safe. Hidden files that start with a dot are skipped. The function <code>unique_target</code> protects against overwriting: a second <code>report.pdf</code> becomes <code>report (1).pdf</code>. Finally, a download that is still in progress may have a temporary extension such as <code>.crdownload</code> or <code>.part</code>, which lands in "Other" and is moved while the browser still writes to it. To avoid that, skip files modified in the last few minutes:</p><pre><code>import time
+
+def is_recent(path, minutes=10):
+    return time.time() - path.stat().st_mtime &lt; minutes * 60</code></pre><p>Add <code>or is_recent(item)</code> to the <code>continue</code> condition, and the script leaves fresh downloads alone.</p><h2 id="s4">Script 2: Remove old files safely</h2><p>Temporary exports, log files and screenshots pile up. This script finds files older than a number of days and moves them into a trash folder inside the same directory, so that you can still recover them. Another day you can empty the trash folder by hand.</p><pre><code>from pathlib import Path
+import shutil
+import time
+
+DRY_RUN = True
+FOLDER = Path.home() / "Documents" / "exports"
+MAX_AGE_DAYS = 30
+
+def clean_old_files(folder, max_age_days):
+    cutoff = time.time() - max_age_days * 86400
+    trash = folder / "_trash"
+    count = 0
+
+    for item in folder.iterdir():
+        if not item.is_file():
+            continue
+        if item.stat().st_mtime &lt; cutoff:
+            print("old:", item.name)
+            if not DRY_RUN:
+                trash.mkdir(exist_ok=True)
+                shutil.move(str(item), str(trash / item.name))
+            count += 1
+    print(f"{count} old files {'found' if DRY_RUN else 'moved to _trash'}")
+
+clean_old_files(FOLDER, MAX_AGE_DAYS)</code></pre><p>The number 86400 is the count of seconds in a day. <code>st_mtime</code> is the last modification time. Be careful with the folder path: double-check it before you switch off the dry run. A typo that points the script at your whole Documents folder would be unpleasant, even with a trash folder.</p><h2 id="s5">Script 3: Rename a batch of files</h2><p>Photos named <code>IMG_4821.jpg</code> tell you nothing. This script renames all images in a folder to a pattern with the date they were last modified and a counter, for example <code>2026-03-14_001.jpg</code>:</p><pre><code>from pathlib import Path
+from datetime import datetime
+
+DRY_RUN = True
+FOLDER = Path.home() / "Pictures" / "trip"
+
+def rename_photos(folder):
+    files = sorted(
+        (p for p in folder.iterdir() if p.suffix.lower() in {".jpg", ".jpeg", ".png"}),
+        key=lambda p: p.stat().st_mtime,
+    )
+    for number, path in enumerate(files, start=1):
+        day = datetime.fromtimestamp(path.stat().st_mtime).strftime("%Y-%m-%d")
+        new_name = f"{day}_{number:03d}{path.suffix.lower()}"
+        target = path.with_name(new_name)
+        print(path.name, "-&gt;", new_name)
+        if not DRY_RUN:
+            path.rename(target)
+
+rename_photos(FOLDER)</code></pre><p>Look at <code>f"{number:03d}"</code>: it pads the counter with zeros to three digits, so file names sort correctly (<code>001</code>, <code>002</code>, ..., <code>010</code>). If a file with the new name already exists, <code>rename</code> may fail or overwrite, depending on the system, so for repeated runs combine it with the <code>unique_target</code> helper from script 1, or include the original name in the new one.</p><h2 id="s6">Script 4: Send yourself a daily report</h2><p>A script that works silently is hard to trust. Make it report to you. The simplest way is a Telegram message, which is covered in the third part of this series, <a href="/blog/telegram-bot-report-python/">building a Telegram bot that reports to you</a>. If you prefer email, the standard library can send it through SMTP. This example uses a Gmail account with an <strong>app password</strong>, which you create in your Google account security settings. Never use your normal password in a script:</p><pre><code>import os
+import smtplib
+from email.message import EmailMessage
+
+def send_email(subject, body):
+    msg = EmailMessage()
+    msg["From"] = os.environ["MAIL_USER"]
+    msg["To"] = os.environ["MAIL_TO"]
+    msg["Subject"] = subject
+    msg.set_content(body)
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as smtp:
+        smtp.login(os.environ["MAIL_USER"], os.environ["MAIL_APP_PASSWORD"])
+        smtp.send_message(msg)
+
+if __name__ == "__main__":
+    send_email("Daily report", "Organised 14 files, removed 3 old exports.")</code></pre><p>Notice that the credentials come from environment variables and not from the code. Never write passwords or tokens in a script that you copy around or upload to GitHub. On Linux and macOS you set a variable with <code>export MAIL_USER=...</code> in the shell, and on Windows with <code>setx MAIL_USER "..."</code>. For a project, a <code>.env</code> file with the <code>python-dotenv</code> package is convenient, as long as the file is excluded from version control.</p><h2 id="s7">Add logging so you can trust the script</h2><p><code>print</code> is fine while you test, but a scheduled script needs a log file. The <code>logging</code> module writes timestamps and levels for you:</p><pre><code>import logging
+from pathlib import Path
+
+LOG_FILE = Path(__file__).resolve().parent / "automation.log"
+
+logging.basicConfig(
+    filename=LOG_FILE,
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s",
+    encoding="utf-8",
+)
+
+logging.info("Started organiser")
+try:
+    organise(SOURCE)
+except Exception:
+    logging.exception("Organiser failed")   # writes the full traceback
+    raise
+logging.info("Finished")</code></pre><p>Build the log path from <code>__file__</code>, as shown, so that the file lands next to the script no matter which folder the script is started from. That matters as soon as you schedule it, because schedulers start programs in unexpected folders.</p><h2 id="s8">Combine the pieces into one project</h2><p>A tidy structure keeps small scripts maintainable:</p><ul><li><code>config.py</code> holds folders, extensions and flags such as <code>DRY_RUN</code>.</li><li><code>tasks.py</code> contains the functions: <code>organise</code>, <code>clean_old_files</code>, <code>rename_photos</code>.</li><li><code>run_daily.py</code> imports the tasks, logs the start and end, and sends the report.</li><li><code>.env</code> holds secrets and is listed in <code>.gitignore</code>.</li></ul><p>The runner collects the numbers each task returns, builds one summary and sends it. Returning a count from each function, instead of only printing it, makes this easy. When something fails, the <code>try/except</code> shown above sends you the traceback instead of leaving you wondering why nothing happened.</p><h2 id="s9">Run it automatically</h2><p>A script you have to start by hand only saves half of the time. To run the daily script every morning without thinking about it, use the scheduler of your system. On Linux and macOS this is cron, on Windows it is Task Scheduler, and on a free cloud service you can use a small web app with a pinger. <a href="/blog/schedule-python-scripts-render/">The next part of the series explains cron and Render in detail</a>. If a scheduled job silently does nothing, <a href="/blog/cron-job-not-running-python-script/">this troubleshooting guide for cron jobs</a> lists the seven usual causes. And when your automation downloads data from the internet, add timeouts and retries as shown in <a href="/blog/python-requests-timeout-retry-fix/">our requests guide</a>.</p><h2 id="s10">Ideas to extend your automation</h2><ul><li>Watch a folder and process new files immediately with the <code>watchdog</code> package.</li><li>Convert images to a smaller size with the <code>Pillow</code> package before uploading them.</li><li>Merge a month of CSV files into one with <code>pandas.concat</code>, and write it with <code>utf-8-sig</code> so Excel shows all characters correctly, as explained in <a href="/blog/python-csv-unicode-garbage-excel-utf8-sig/">this CSV encoding article</a>.</li><li>Collect public data on a schedule using the techniques from <a href="/blog/python-web-scraping-beautifulsoup/">our BeautifulSoup tutorial</a>.</li><li>Zip an important folder with <code>shutil.make_archive</code> and keep the last seven backups.</li></ul><h2 id="s11">Frequently asked questions</h2><h3>Do I need to be an advanced programmer for this?</h3><p>No. The scripts above use basic Python: loops, conditions, functions and a few standard modules. If you can read them, you can adapt them. Start with the dry-run versions and change one thing at a time.</p><h3>Is it safe to run these scripts on my real folders?</h3><p>It is safe when you follow the rules: dry run first, move instead of delete, test on a copy and check the paths. The scripts here never overwrite existing files, but always keep a backup of anything important.</p><h3>Will the scripts work on Windows, macOS and Linux?</h3><p>Yes, because <code>pathlib</code> and <code>shutil</code> hide the differences. Only the way you set environment variables and schedule the script differs between systems.</p><h3>How do I stop a script that is running wild?</h3><p>Press Ctrl and C in the terminal. That is another reason to move files to a trash folder instead of deleting them: an interrupted script leaves everything recoverable.</p><h3>What should I automate next?</h3><p>Look at your own week. Whatever you do twice, with the same steps, is a candidate. Write down the steps in plain words first. If you can describe them clearly, the script nearly writes itself.</p><h2 id="s12">Final thoughts</h2><p>Automation is not about clever code, it is about removing small repeated chores safely. Choose boring tasks, make the script show its plan before it acts, keep a way back for every change, log the result and let the script tell you when it is done. Build one small script this week, and run it for a month. Once you see how much time it saves, you will start spotting the next task to hand over to Python.</p></div></article>
+<div class="section-title"><h2>Related articles</h2></div><div class="grid auto"><article class="card post" data-cat="Automation" data-tech="Python"><a class="cover c1" href="/blog/schedule-python-scripts-render/" aria-label="Schedule Python Scripts with Cron and Render"><img src="/assets/img/covers/schedule-python-scripts-render.jpg" alt="Schedule Python Scripts with Cron and Render" width="1200" height="630" loading="lazy" decoding="async"></a><div class="pbody"><div class="row"><span class="chip">⚙️ Automation</span><span class="chip">🐍 Python</span><span class="chip alt">Part 2</span></div><h3><a href="/blog/schedule-python-scripts-render/">Schedule Python Scripts with Cron and Render</a></h3><p class="muted">Schedule Python scripts with cron, a free Render web service or GitHub Actions, with working code, honest limits and security tips.</p><div class="row between tiny muted"><span>2026-01-17 · 10 min read</span><button class="bm" data-slug="schedule-python-scripts-render" aria-label="Bookmark" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></button></div></div></article><article class="card post" data-cat="Automation" data-tech="Python"><a class="cover c4" href="/blog/python-csv-unicode-garbage-excel-utf8-sig/" aria-label="Python CSV Shows Garbage Characters in Excel? Use utf-8-sig"><img src="/assets/img/covers/python-csv-unicode-garbage-excel-utf8-sig.jpg" alt="Python CSV Shows Garbage Characters in Excel? Use utf-8-sig" width="1200" height="630" loading="lazy" decoding="async"></a><div class="pbody"><div class="row"><span class="chip">⚙️ Automation</span><span class="chip">🐍 Python</span></div><h3><a href="/blog/python-csv-unicode-garbage-excel-utf8-sig/">Python CSV Shows Garbage Characters in Excel? Use utf-8-sig</a></h3><p class="muted">Hindi text, the rupee sign or accented letters turn into odd symbols when a Python CSV opens in Excel. Understand why and fix it with one argument.</p><div class="row between tiny muted"><span>2026-10-12 · 11 min read</span><button class="bm" data-slug="python-csv-unicode-garbage-excel-utf8-sig" aria-label="Bookmark" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></button></div></div></article><article class="card post" data-cat="Bot" data-tech="Python"><a class="cover c2" href="/blog/telegram-bot-report-python/" aria-label="Build a Telegram Bot That Reports to You"><img src="/assets/img/covers/telegram-bot-report-python.jpg" alt="Build a Telegram Bot That Reports to You" width="1200" height="630" loading="lazy" decoding="async"></a><div class="pbody"><div class="row"><span class="chip">🤖 Bot</span><span class="chip">🐍 Python</span><span class="chip alt">Part 3</span></div><h3><a href="/blog/telegram-bot-report-python/">Build a Telegram Bot That Reports to You</a></h3><p class="muted">Send alerts, files and error tracebacks from Python to your phone with a Telegram bot. Includes a reusable notifier module and security tips.</p><div class="row between tiny muted"><span>2026-01-24 · 9 min read</span><button class="bm" data-slug="telegram-bot-report-python" aria-label="Bookmark" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></button></div></div></article></div></div>
+<footer class="foot"><div class="row between"><span>©️ Copyright by Dekho Hatke 2026. All rights reserved.</span>
+<span class="row"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy</a><a href="/privacy-policy/#terms">Terms</a><a href="/sitemap.xml">Sitemap</a></span></div></footer></main></div>
+<button class="bm fab" data-slug="automate-daily-tasks-python" aria-label="Bookmark this article" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></button><script src="/assets/config.js"></script><script src="/assets/posts.js"></script><script src="/assets/app.js"></script><script src="/assets/gate.js" defer></script></body></html>

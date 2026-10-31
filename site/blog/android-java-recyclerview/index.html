@@ -1,0 +1,254 @@
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Android RecyclerView in Java: Step by Step | Dekho Hatke</title><meta name="description" content="Build an Android RecyclerView in Java step by step: adapter, ViewHolder, click handling, adding and removing items, and DiffUtil.">
+<meta name="author" content="Dr. Dev"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><link rel="canonical" href="https://dekhohatke.com/blog/android-java-recyclerview/">
+<link rel="alternate" type="application/rss+xml" title="Dekho Hatke" href="/feed.xml"><meta property="og:type" content="article"><meta property="og:locale" content="en_IN"><meta property="og:title" content="Android Java: RecyclerView Step by Step"><meta property="og:description" content="Build an Android RecyclerView in Java step by step: adapter, ViewHolder, click handling, adding and removing items, and DiffUtil."><meta property="og:url" content="https://dekhohatke.com/blog/android-java-recyclerview/"><meta property="og:site_name" content="Dekho Hatke"><meta property="og:image" content="https://dekhohatke.com/assets/img/covers/android-java-recyclerview.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Android Java: RecyclerView Step by Step - cover illustration"><meta property="article:published_time" content="2026-03-02T06:00:00+05:30"><meta property="article:modified_time" content="2026-10-29T06:00:00+05:30"><meta property="article:section" content="Apps"><meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Android Java: RecyclerView Step by Step"><meta name="twitter:description" content="Build an Android RecyclerView in Java step by step: adapter, ViewHolder, click handling, adding and removing items, and DiffUtil."><meta name="twitter:image" content="https://dekhohatke.com/assets/img/covers/android-java-recyclerview.jpg"><meta name="twitter:image:alt" content="Android Java: RecyclerView Step by Step - cover illustration"><meta name="theme-color" content="#f4f3fb">
+<link rel="preload" as="image" href="/assets/img/covers/android-java-recyclerview.jpg" fetchpriority="high">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Android Java: RecyclerView Step by Step", "description": "Build an Android RecyclerView in Java step by step: adapter, ViewHolder, click handling, adding and removing items, and DiffUtil.", "image": ["https://dekhohatke.com/assets/img/covers/android-java-recyclerview.jpg"], "datePublished": "2026-03-02", "dateModified": "2026-10-29", "author": {"@type": "Person", "name": "Dr. Dev", "url": "https://dekhohatke.com/about/"}, "publisher": {"@type": "Organization", "name": "Dekho Hatke", "url": "https://dekhohatke.com/", "logo": {"@type": "ImageObject", "url": "https://dekhohatke.com/icon-512.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://dekhohatke.com/blog/android-java-recyclerview/"}, "articleSection": "Apps", "keywords": "Java, Apps, Android, RecyclerView, Step", "wordCount": 1461, "inLanguage": "en"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dekhohatke.com/"}, {"@type": "ListItem", "position": 2, "name": "Android Java: RecyclerView Step by Step", "item": "https://dekhohatke.com/blog/android-java-recyclerview/"}]}]</script>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("dh-theme")||"light"}catch(e){}</script></head>
+<body><div class="blobs" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div><div id="progress" aria-hidden="true"></div>
+<div class="shell"><aside id="drawer" class="drawer" aria-label="Main navigation">
+<a class="brand" href="/"><img class="logo-img" src="/icon-192.png" alt="" width="46" height="46"><span><b>Dekho</b> Hatke</span></a>
+<nav id="nav"><a href="/" data-path="/"><i>🏠</i>Home</a><a href="/series/" data-path="/series/"><i>📚</i>Series</a><a href="/bookmarks/" data-path="/bookmarks/"><i class="navsvg"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></i>Bookmarks</a><a href="/privacy-policy/" data-path="/privacy-policy/"><i>🔒</i>Privacy Policy</a><a href="/privacy-policy/#terms" data-path="/privacy-policy/#terms"><i>📄</i>Terms and Conditions</a><a href="/contact/" data-path="/contact/"><i>✉️</i>Contact me</a><a href="/about/" data-path="/about/"><i>🙋</i>About me</a><p class="nav-h">Follow me on</p><a href="/follow/instagram/"><i class="navsvg"><svg viewBox="0 0 24 24" class="" aria-hidden="true" focusable="false" ><defs><linearGradient id="ign" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".62" stop-color="#d62976"/><stop offset=".85" stop-color="#962fbf"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5.6" fill="url(#ign)"/><circle cx="12" cy="12" r="4.4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="17.4" cy="6.6" r="1.3" fill="#fff"/></svg></i>Instagram</a><a href="/follow/facebook/"><i class="navsvg"><svg viewBox="0 0 24 24" class="" aria-hidden="true" focusable="false" ><circle cx="12" cy="12" r="10.5" fill="#1877F2"/><path fill="#fff" d="M13.2 21.4v-7.6h2.5l.4-3h-2.9V8.9c0-.9.3-1.5 1.5-1.5h1.6V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2H7.7v3h2.5v7.6z"/></svg></i>Facebook</a><a href="/follow/youtube/"><i class="navsvg"><svg viewBox="0 0 24 24" class="" aria-hidden="true" focusable="false" ><rect x="1.5" y="4.6" width="21" height="14.8" rx="4.4" fill="#FF0000"/><path fill="#fff" d="M9.8 8.8v6.4l5.6-3.2z"/></svg></i>YouTube</a><a href="/follow/x/"><i class="navsvg"><svg viewBox="0 0 24 24" class="" aria-hidden="true" focusable="false" ><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></i>X</a></nav></aside><div id="scrim" class="scrim"></div>
+<main class="main"><header class="topbar"><button class="icon-btn only-mobile" id="menuBtn" aria-label="Open menu">☰</button>
+<div class="search-wrap"><label class="search"><span aria-hidden="true">🔎</span><input id="q" type="search" placeholder="Search tutorials, tools, code…" autocomplete="off" aria-label="Search"></label><div id="results" class="results" hidden></div></div>
+<button class="icon-btn" id="themeBtn" aria-label="Toggle day and night mode">🌗</button></header>
+<div class="view"><article class="article"><nav class="tiny muted" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/#latest">Articles</a> / Android Java: RecyclerView Step by Step</nav>
+<h1>Android Java: RecyclerView Step by Step</h1><p class="muted">Build an Android RecyclerView in Java step by step: adapter, ViewHolder, click handling, adding and removing items, and DiffUtil.</p>
+<div class="row tiny muted"><span>By <a href="/about/">Dr. Dev</a></span><span>Published <time datetime="2026-03-02">2026-03-02</time></span><span>Updated <time datetime="2026-10-29">2026-10-29</time></span><span>8 min read</span></div><div class="row actions"><button class="btn bm-btn bm" data-slug="android-java-recyclerview" aria-label="Bookmark this article" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg><span class="bm-t">Bookmark</span></button><button class="btn share-btn" id="shareBtn" type="button" aria-label="Share this article"><svg viewBox="0 0 24 24" class="shi" aria-hidden="true" focusable="false" ><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg><span>Share</span></button></div>
+<div class="cover big c2"><img src="/assets/img/covers/android-java-recyclerview.jpg" alt="Android Java: RecyclerView Step by Step - cover illustration" width="1200" height="630" fetchpriority="high" decoding="async"></div><nav class="toc card flat"><b>In this article</b><a href="#s0">The four pieces of a RecyclerView list</a><a href="#s1">Step 1: Add the dependency</a><a href="#s2">Step 2: Create the model class</a><a href="#s3">Step 3: Design the screen and the row</a><a href="#s4">Step 4: Write the adapter</a><a href="#s5">Step 5: Connect everything in the activity</a><a href="#s6">Choosing the right notify method</a><a href="#s7">Step 6: Upgrade to ListAdapter and DiffUtil</a><a href="#s8">Different row types</a><a href="#s9">Performance tips that matter</a><a href="#s10">Common mistakes</a><a href="#s11">Frequently asked questions</a><a href="#s12">Final thoughts</a></nav><div class="prose"><p>Almost every Android app shows a list somewhere: contacts, messages, products, notes, orders, news. If your list has hundreds or thousands of rows, you cannot create one view for each row, because the phone would run out of memory and scrolling would stutter. <strong>RecyclerView</strong> solves this problem. It creates only enough row views to fill the screen and then <strong>recycles</strong> them: when a row scrolls out at the top, the same view object is reused for a new row that scrolls in at the bottom.</p><p>In this tutorial you build a small but complete task list app in Java. You will add the library, create the layouts, write a model class and an adapter, handle taps on rows, add and remove items with proper animations, show dividers and upgrade to <code>ListAdapter</code> with <code>DiffUtil</code> for smooth updates. Every part has code that you can copy into Android Studio. If your list stays blank when you run it, our checklist for <a href="/blog/recyclerview-no-adapter-attached-skipping-layout/">fixing "No adapter attached; skipping layout"</a> will find the cause in minutes.</p><h2 id="s0">The four pieces of a RecyclerView list</h2><p>A working list always has four parts. Understanding them makes every error message easier to read:</p><ol><li><strong>The data</strong>: a <code>List</code> of objects, such as tasks. RecyclerView knows nothing about it directly.</li><li><strong>The row layout</strong>: an XML file that describes how one row looks.</li><li><strong>The ViewHolder</strong>: a small Java class that holds references to the views of one row, so that the app does not call <code>findViewById</code> again and again while scrolling.</li><li><strong>The adapter</strong>: the class that connects data and views. It creates ViewHolders when needed and fills them with data for a given position.</li></ol><p>A fifth helper, the <strong>LayoutManager</strong>, decides whether rows appear in a vertical list, a horizontal list or a grid.</p><figure><a href="/assets/img/fig/android-java-recyclerview-1.png" target="_blank" rel="noopener"><img src="/assets/img/fig/android-java-recyclerview-1.png" alt="Annotated phone mockup of a task list app showing the RecyclerView, one row layout, the ViewHolder and the adapter." width="1200" height="660" loading="lazy" decoding="async"></a><figcaption>The finished task list and the part of the code responsible for each element. (tap the image to enlarge)</figcaption></figure><h2 id="s1">Step 1: Add the dependency</h2><p>Open the <code>build.gradle</code> file of your <strong>app</strong> module and add the RecyclerView library. Check the official AndroidX release page for the newest version number, the one below is an example:</p><pre><code>dependencies {
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+}</code></pre><p>Press <strong>Sync Now</strong>. New projects based on Material Components may already include the library, but adding it explicitly does no harm.</p><h2 id="s2">Step 2: Create the model class</h2><p>A model is a plain Java class that describes one row of data. Our list shows tasks with a title and a done flag:</p><pre><code>public class Task {
+    private final long id;
+    private final String title;
+    private boolean done;
+
+    public Task(long id, String title, boolean done) {
+        this.id = id;
+        this.title = title;
+        this.done = done;
+    }
+
+    public long getId() { return id; }
+    public String getTitle() { return title; }
+    public boolean isDone() { return done; }
+    public void setDone(boolean done) { this.done = done; }
+}</code></pre><p>Giving each task a stable <code>id</code> is a good habit. Later, when we use <code>DiffUtil</code>, the id lets Android recognise the same task even if its position changes.</p><h2 id="s3">Step 3: Design the screen and the row</h2><p>The activity layout contains the list and a button to add tasks. Create <code>activity_main.xml</code>:</p><pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" /&gt;
+
+    &lt;Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Add task"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" /&gt;
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre><p>Giving the RecyclerView <code>0dp</code> width and height with constraints makes it fill the screen without the <code>wrap_content</code> problems that many beginners hit. Now the row layout, <code>item_task.xml</code>. The root height must be <code>wrap_content</code>, otherwise one row would be as tall as the whole list:</p><pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="16dp"&gt;
+
+    &lt;CheckBox
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:textSize="18sp" /&gt;
+
+    &lt;ImageButton
+        android:id="@+id/delete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Delete task"
+        android:src="@android:drawable/ic_menu_delete" /&gt;
+&lt;/LinearLayout&gt;</code></pre><p>The <code>contentDescription</code> on the image button is not decoration: screen readers announce it for people who use TalkBack.</p><h2 id="s4">Step 4: Write the adapter</h2><p>The adapter is the heart of the list. It extends <code>RecyclerView.Adapter</code> and needs three methods. We also add a small listener interface so that the activity, and not the adapter, decides what happens when a user taps a row. Keeping that decision outside the adapter keeps the adapter reusable:</p><pre><code>import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TaskAdapter extends RecyclerView.Adapter&lt;TaskAdapter.TaskHolder&gt; {
+
+    public interface Listener {
+        void onToggle(Task task, boolean done);
+        void onDelete(int position);
+    }
+
+    private final List&lt;Task&gt; tasks = new ArrayList&lt;&gt;();
+    private final Listener listener;
+
+    public TaskAdapter(Listener listener) {
+        this.listener = listener;
+    }
+
+    public void add(Task t) {
+        tasks.add(0, t);
+        notifyItemInserted(0);
+    }
+
+    public void removeAt(int position) {
+        tasks.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    @NonNull
+    @Override
+    public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_task, parent, false);
+        return new TaskHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull TaskHolder h, int position) {
+        Task t = tasks.get(position);
+        h.title.setText(t.getTitle());
+
+        h.check.setOnCheckedChangeListener(null);   // avoid triggering while recycling
+        h.check.setChecked(t.isDone());
+        h.check.setOnCheckedChangeListener((btn, checked) -&gt; listener.onToggle(t, checked));
+
+        h.delete.setOnClickListener(v -&gt; {
+            int pos = h.getBindingAdapterPosition();
+            if (pos != RecyclerView.NO_POSITION) listener.onDelete(pos);
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return tasks.size();
+    }
+
+    static class TaskHolder extends RecyclerView.ViewHolder {
+        final CheckBox check;
+        final TextView title;
+        final ImageButton delete;
+
+        TaskHolder(@NonNull View itemView) {
+            super(itemView);
+            check = itemView.findViewById(R.id.check);
+            title = itemView.findViewById(R.id.title);
+            delete = itemView.findViewById(R.id.delete);
+        }
+    }
+}</code></pre><p>Several details here are worth understanding, because they prevent classic bugs:</p><ul><li><strong><code>inflate(..., parent, false)</code></strong>: the <code>false</code> means "do not attach yet". RecyclerView attaches the view itself. Passing <code>true</code> crashes the app.</li><li><strong>Setting the checkbox listener to <code>null</code> first</strong>: rows are reused. When a recycled row gets new data and <code>setChecked</code> is called, the old listener would fire and report a change that the user never made. Clearing the listener before setting the state avoids that.</li><li><strong><code>getBindingAdapterPosition()</code></strong>: never capture the <code>position</code> parameter of <code>onBindViewHolder</code> inside a click listener. After an insert or a removal, the position stored in the listener is wrong. Ask the holder for its current position at click time, and check for <code>NO_POSITION</code>, which appears while the row is being removed.</li></ul><h2 id="s5">Step 5: Connect everything in the activity</h2><pre><code>import android.os.Bundle;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class MainActivity extends AppCompatActivity implements TaskAdapter.Listener {
+
+    private TaskAdapter adapter;
+    private RecyclerView recycler;
+    private long nextId = 1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        recycler = findViewById(R.id.recycler);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+        recycler.addItemDecoration(
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        adapter = new TaskAdapter(this);
+        recycler.setAdapter(adapter);
+
+        adapter.add(new Task(nextId++, "Buy milk", false));
+        adapter.add(new Task(nextId++, "Finish Java chapter", false));
+
+        Button add = findViewById(R.id.addButton);
+        add.setOnClickListener(v -&gt; {
+            adapter.add(new Task(nextId++, "New task " + (nextId - 1), false));
+            recycler.scrollToPosition(0);
+        });
+    }
+
+    @Override
+    public void onToggle(Task task, boolean done) {
+        task.setDone(done);
+    }
+
+    @Override
+    public void onDelete(int position) {
+        adapter.removeAt(position);
+    }
+}</code></pre><p>Run the app. You should see two tasks, a divider line between rows, and the <strong>Add task</strong> button inserting new rows at the top with a short animation. Deleting a row also animates. These animations come free, but only because we used <code>notifyItemInserted</code> and <code>notifyItemRemoved</code>. If you used <code>notifyDataSetChanged()</code> instead, the whole list would redraw without animation.</p><h2 id="s6">Choosing the right notify method</h2><p>The adapter does not watch your list, so you must tell it what changed. Pick the most specific call:</p><ul><li><code>notifyItemInserted(position)</code> after adding one row.</li><li><code>notifyItemRemoved(position)</code> after removing one row.</li><li><code>notifyItemChanged(position)</code> after changing the content of one row.</li><li><code>notifyItemMoved(from, to)</code> after moving a row.</li><li><code>notifyItemRangeInserted(start, count)</code> after adding several rows.</li><li><code>notifyDataSetChanged()</code> only when everything changed, or when the list is small. It is the least efficient option and it disables animations.</li></ul><p>If you remove an item from the list <strong>without</strong> notifying, RecyclerView may crash later with an <code>IndexOutOfBoundsException</code> ("Inconsistency detected"). Always change the data and notify in the same method, as <code>add</code> and <code>removeAt</code> do above.</p><h2 id="s7">Step 6: Upgrade to ListAdapter and DiffUtil</h2><p>Calling the specific notify methods by hand is fine for add and delete. But when you load a <strong>new version of the whole list</strong>, from a database or from the internet, you do not know which rows changed. <code>ListAdapter</code> solves that. It computes the difference between the old and the new list on a background thread and animates only what changed. You write a small <code>DiffUtil.ItemCallback</code>:</p><pre><code>import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
+
+public class TaskListAdapter extends ListAdapter&lt;Task, TaskAdapter.TaskHolder&gt; {
+
+    public TaskListAdapter() {
+        super(DIFF);
+    }
+
+    private static final DiffUtil.ItemCallback&lt;Task&gt; DIFF = new DiffUtil.ItemCallback&lt;Task&gt;() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Task a, @NonNull Task b) {
+            return a.getId() == b.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Task a, @NonNull Task b) {
+            return a.getTitle().equals(b.getTitle()) &amp;&amp; a.isDone() == b.isDone();
+        }
+    };
+
+    @NonNull
+    @Override
+    public TaskAdapter.TaskHolder onCreateViewHolder(@NonNull android.view.ViewGroup parent, int viewType) {
+        android.view.View v = android.view.LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_task, parent, false);
+        return new TaskAdapter.TaskHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull TaskAdapter.TaskHolder h, int position) {
+        Task t = getItem(position);
+        h.title.setText(t.getTitle());
+        h.check.setChecked(t.isDone());
+    }
+}</code></pre><p>To update, you call <code>adapter.submitList(newList)</code> with a <strong>new list object</strong>. If you modify the old list and submit the same object, nothing happens, because <code>ListAdapter</code> thinks it is unchanged. <code>areItemsTheSame</code> answers "is this the same task?", and the id is the right thing to compare. <code>areContentsTheSame</code> answers "did anything visible change?". Note that for the nested <code>TaskHolder</code> to be used outside its class, make it <code>public static</code> and its constructor and fields accessible.</p><h2 id="s8">Different row types</h2><p>Sometimes a list mixes row types, for example a header and normal items. Override <code>getItemViewType(int position)</code> in the adapter to return a number for each type. <code>onCreateViewHolder</code> receives that number as <code>viewType</code> and inflates the matching layout. Keep one ViewHolder class per type. This is the standard way to build section headers, ads between items and "loading" rows.</p><h2 id="s9">Performance tips that matter</h2><ul><li><strong>Never do heavy work in <code>onBindViewHolder</code>.</strong> It runs while the user scrolls. Do not read files, parse JSON or create many objects there.</li><li><strong>Load images with a library</strong> such as Glide or Coil, and not by decoding bitmaps yourself. They cache, resize and cancel requests for recycled rows.</li><li><strong>Call <code>setHasFixedSize(true)</code></strong> on the RecyclerView when its size does not depend on the content of the adapter. It allows small optimisations.</li><li><strong>Keep row layouts flat.</strong> Deeply nested layouts are slow to measure. A <code>ConstraintLayout</code> often replaces several nested <code>LinearLayout</code> views.</li><li><strong>Use stable ids</strong> if your data has them (<code>setHasStableIds(true)</code> with <code>getItemId</code>), which helps animations and state keeping.</li></ul><h2 id="s10">Common mistakes</h2><ol><li>Forgetting <code>setLayoutManager</code> or <code>setAdapter</code>, which leaves the list blank.</li><li>Using <code>match_parent</code> as the height of the row layout root.</li><li>Capturing <code>position</code> in click listeners instead of asking for the adapter position at click time.</li><li>Changing the list from a background thread without switching to the main thread before notifying.</li><li>Submitting the same list instance to <code>ListAdapter</code>.</li><li>Doing network calls inside <code>onBindViewHolder</code>.</li></ol><h2 id="s11">Frequently asked questions</h2><h3>Should I use ListView instead?</h3><p>No. ListView is an older component. It lacks the ViewHolder pattern by default, has fewer animation options and is harder to customise. RecyclerView is the standard choice for new apps.</p><h3>Can I make a grid or a horizontal list?</h3><p>Yes. Replace the LayoutManager: <code>new GridLayoutManager(this, 2)</code> for two columns, or <code>new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)</code> for a horizontal list. The adapter stays the same.</p><h3>How do I handle a click on the whole row?</h3><p>Set <code>itemView.setOnClickListener</code> in the ViewHolder constructor or in <code>onBindViewHolder</code>, and forward the event to your listener interface as we did for the delete button.</p><h3>Does this work with Kotlin?</h3><p>Yes, the structure is identical. Only the syntax differs. The concepts of adapter, ViewHolder, LayoutManager and <code>DiffUtil</code> are the same.</p><h3>How do I save the list so it survives restarting the app?</h3><p>RecyclerView only displays data. Store the tasks in a database such as Room or in a file, load them when the screen starts and submit them to the adapter.</p><h2 id="s12">Final thoughts</h2><p>RecyclerView looks like a lot of code at first, but the pattern never changes: data, row layout, ViewHolder, adapter and LayoutManager. Once you have written one list, every later list is a copy with different names. Start with the simple adapter, learn the notify methods, and move to <code>ListAdapter</code> with <code>DiffUtil</code> when your data changes often. The result is a list that scrolls smoothly even with thousands of items.</p></div></article>
+<div class="section-title"><h2>Related articles</h2></div><div class="grid auto"><article class="card post" data-cat="Apps" data-tech="Java"><a class="cover c2" href="/blog/recyclerview-no-adapter-attached-skipping-layout/" aria-label="Android RecyclerView Blank? Fix No Adapter Attached; Skipping Layout"><img src="/assets/img/covers/recyclerview-no-adapter-attached-skipping-layout.jpg" alt="Android RecyclerView Blank? Fix No Adapter Attached; Skipping Layout" width="1200" height="630" loading="lazy" decoding="async"></a><div class="pbody"><div class="row"><span class="chip">📱 Apps</span><span class="chip">☕ Java</span></div><h3><a href="/blog/recyclerview-no-adapter-attached-skipping-layout/">Android RecyclerView Blank? Fix No Adapter Attached; Skipping Layout</a></h3><p class="muted">A seven point checklist for an empty RecyclerView in Java: adapter, LayoutManager, item count, row layout height, data refresh and ListAdapter traps.</p><div class="row between tiny muted"><span>2026-10-18 · 8 min read</span><button class="bm" data-slug="recyclerview-no-adapter-attached-skipping-layout" aria-label="Bookmark" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></button></div></div></article><article class="card post" data-cat="Website" data-tech="JavaScript,Python"><a class="cover c1" href="/blog/javascript-fetch-api-guide/" aria-label="JavaScript Fetch API: A Practical Guide"><img src="/assets/img/covers/javascript-fetch-api-guide.jpg" alt="JavaScript Fetch API: A Practical Guide" width="1200" height="630" loading="lazy" decoding="async"></a><div class="pbody"><div class="row"><span class="chip">🌐 Website</span><span class="chip">🌐 JavaScript</span><span class="chip">🐍 Python</span></div><h3><a href="/blog/javascript-fetch-api-guide/">JavaScript Fetch API: A Practical Guide</a></h3><p class="muted">Learn JavaScript fetch: GET and POST, error handling, timeouts with AbortController, retries and calling your own backend from a static site.</p><div class="row between tiny muted"><span>2026-02-23 · 8 min read</span><button class="bm" data-slug="javascript-fetch-api-guide" aria-label="Bookmark" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></button></div></div></article><article class="card post" data-cat="Apps" data-tech="C++"><a class="cover c5" href="/blog/cpp-pointers-explained/" aria-label="C++ Pointers Explained Simply"><img src="/assets/img/covers/cpp-pointers-explained.jpg" alt="C++ Pointers Explained Simply" width="1200" height="630" loading="lazy" decoding="async"></a><div class="pbody"><div class="row"><span class="chip">📱 Apps</span><span class="chip">⚙️ C++</span></div><h3><a href="/blog/cpp-pointers-explained/">C++ Pointers Explained Simply</a></h3><p class="muted">Understand C++ pointers with simple examples: addresses, dereferencing, nullptr, const, new and delete, and smart pointers.</p><div class="row between tiny muted"><span>2026-02-16 · 10 min read</span><button class="bm" data-slug="cpp-pointers-explained" aria-label="Bookmark" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></button></div></div></article></div></div>
+<footer class="foot"><div class="row between"><span>©️ Copyright by Dekho Hatke 2026. All rights reserved.</span>
+<span class="row"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy</a><a href="/privacy-policy/#terms">Terms</a><a href="/sitemap.xml">Sitemap</a></span></div></footer></main></div>
+<button class="bm fab" data-slug="android-java-recyclerview" aria-label="Bookmark this article" aria-pressed="false"><svg viewBox="0 0 24 24" class="bmi" aria-hidden="true" focusable="false" ><path d="M6.5 3h11a1.5 1.5 0 0 1 1.5 1.5V21l-7-4.4L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg></button><script src="/assets/config.js"></script><script src="/assets/posts.js"></script><script src="/assets/app.js"></script><script src="/assets/gate.js" defer></script></body></html>
